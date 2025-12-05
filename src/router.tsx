@@ -1,22 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
 import AppLayout from "./layout/AppLayout";
 
-import Home from "./pages/Home"; // if you still want a homepage
+import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Clients from "./pages/Clients";
 import CheckIn from "./pages/CheckIn";
-import Intake from "./pages/Intake"; // optional
+import Intake from "./pages/Intake";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />,   // ← wraps all pages in the sidebar layout
+    element: <AppLayout />,
     children: [
-      { index: true, element: <Home /> }, // loads at "/"
+      { index: true, element: <Home /> },
       { path: "dashboard", element: <Dashboard /> },
       { path: "clients", element: <Clients /> },
       { path: "check-in", element: <CheckIn /> },
-      { path: "intake", element: <Intake /> }, // optional
+      { path: "intake", element: <Intake /> }, 
     ],
   },
 ]);
