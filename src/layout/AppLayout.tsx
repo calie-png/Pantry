@@ -1,56 +1,64 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+// AppLayout.tsx
+import { NavLink, Outlet } from "react-router-dom";
 
 export default function AppLayout() {
-  const location = useLocation();
-
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex h-screen bg-gray-100">
+      {/* SIDEBAR */}
+      <aside className="w-64 bg-white shadow-md flex flex-col">
+        <div className="px-6 py-5 border-b">
+          <h2 className="text-xl font-semibold">Pantry System</h2>
+        </div>
 
-      {/* Sidebar */}
-      <aside className="w-64 bg-white shadow-md p-6 hidden md:block">
-        <h2 className="text-xl font-bold mb-6">Pantry System</h2>
-
-        <nav className="flex flex-col gap-3">
-          <Link
+        <nav className="flex-1 px-4 py-6 space-y-2">
+          <NavLink
             to="/dashboard"
-            className={`hover:text-blue-600 ${
-              location.pathname === "/dashboard" ? "font-bold text-blue-600" : ""
-            }`}
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md hover:bg-gray-200 ${
+                isActive ? "bg-blue-600 text-white" : "text-gray-700"
+              }`
+            }
           >
             📊 Dashboard
-          </Link>
+          </NavLink>
 
-          <Link
+          <NavLink
             to="/clients"
-            className={`hover:text-blue-600 ${
-              location.pathname === "/clients" ? "font-bold text-blue-600" : ""
-            }`}
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md hover:bg-gray-200 ${
+                isActive ? "bg-blue-600 text-white" : "text-gray-700"
+              }`
+            }
           >
             👥 Clients
-          </Link>
+          </NavLink>
 
-          <Link
-            to="/check-in"
-            className={`hover:text-blue-600 ${
-              location.pathname === "/check-in" ? "font-bold text-blue-600" : ""
-            }`}
+          <NavLink
+            to="/checkin"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md hover:bg-gray-200 ${
+                isActive ? "bg-blue-600 text-white" : "text-gray-700"
+              }`
+            }
           >
-            📝 Check-In
-          </Link>
+            🧾 Client Check-In
+          </NavLink>
 
-          <Link
+          <NavLink
             to="/intake"
-            className={`hover:text-blue-600 ${
-              location.pathname === "/intake" ? "font-bold text-blue-600" : ""
-            }`}
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md hover:bg-gray-200 ${
+                isActive ? "bg-blue-600 text-white" : "text-gray-700"
+              }`
+            }
           >
-            📦 Intake
-          </Link>
+            📦 Food Intake
+          </NavLink>
         </nav>
       </aside>
 
-      {/* Content */}
-      <main className="flex-1 p-6">
+      {/* MAIN CONTENT */}
+      <main className="flex-1 overflow-y-auto">
         <Outlet />
       </main>
     </div>
