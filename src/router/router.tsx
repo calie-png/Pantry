@@ -1,12 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-
-// Later we will add pages like Dashboard, IntakeForm, CheckIn, Admin, etc.
-// For now, keep it minimal so Vite can build successfully.
+import Dashboard from "../pages/Dashboard";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />
   }
 ]);
