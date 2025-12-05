@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AppLayout from "./layout/AppLayout";
 
-// Correct imports based on your actual filenames
+// Correct imports based on your real filenames
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import ClientsPage from "./pages/ClientsPage";
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <AppLayout />,
     children: [
-      { index: true, element: <Home /> }, 
+      { index: true, element: <Home /> },
       { path: "dashboard", element: <Dashboard /> },
       { path: "clients", element: <ClientsPage /> },
       { path: "checkin", element: <CheckInPage /> },
