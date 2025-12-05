@@ -1,84 +1,42 @@
-import { useEffect, useState } from "react";
-import { supabase } from "../supabase/client";
-
-interface ClientRecord {
-  id: number;
-  first_name: string;
-  last_name: string;
-  phone: string;
-  email: string;
-  created_at: string;
-}
+import { Link } from "react-router-dom";
 
 export default function App() {
-  const [clients, setClients] = useState<ClientRecord[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  // Fetch clients from Supabase
-  const loadClients = async () => {
-    setLoading(true);
-    const { data, error } = await supabase.from("clients").select("*");
-
-    if (error) {
-      console.error(error);
-      setError("Could not load clients.");
-      setLoading(false);
-      return;
-    }
-
-    setClients(data || []);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    loadClients();
-  }, []);
-
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-4xl mx-auto bg-white shadow rounded p-6">
-        <h1 className="text-2xl font-bold mb-4">Food Pantry System</h1>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+      <div className="bg-white shadow-lg rounded-xl p-10 max-w-xl w-full text-center">
 
-        {/* Loading State */}
-        {loading && <p className="text-gray-600">Loading clients…</p>}
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">
+          Food Pantry System
+        </h1>
 
-        {/* Error State */}
-        {error && <p className="text-red-500">{error}</p>}
+        <p className="text-gray-600 mb-8">
+          Welcome to your pantry management hub. Choose a section to get started.
+        </p>
 
-        {/* Client Table */}
-        {!loading && !error && (
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="text-left bg-gray-200">
-                <th className="p-2 border">ID</th>
-                <th className="p-2 border">First Name</th>
-                <th className="p-2 border">Last Name</th>
-                <th className="p-2 border">Phone</th>
-                <th className="p-2 border">Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              {clients.map((c) => (
-                <tr key={c.id} className="border-t">
-                  <td className="p-2 border">{c.id}</td>
-                  <td className="p-2 border">{c.first_name}</td>
-                  <td className="p-2 border">{c.last_name}</td>
-                  <td className="p-2 border">{c.phone}</td>
-                  <td className="p-2 border">{c.email}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+        <div className="space-y-4">
 
-        {/* Refresh */}
-        <button
-          onClick={loadClients}
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-        >
-          Refresh
-        </button>
+          <Link
+            to="/dashboard"
+            className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
+          >
+            Go to Dashboard
+          </Link>
+
+          <Link
+            to="/clients"
+            className="block w-full bg-gray-800 hover:bg-black text-white font-semibold py-3 rounded-lg transition"
+          >
+            View All Clients
+          </Link>
+
+          <Link
+            to="/checkin"
+            className="block w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition"
+          >
+            Client Check-In
+          </Link>
+
+        </div>
       </div>
     </div>
   );
