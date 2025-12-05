@@ -1,14 +1,26 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Dashboard from "../pages/Dashboard";
+import ClientsPage from "../pages/ClientsPage";
+import CheckInPage from "../pages/CheckInPage";
 
-export const router = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <App />,
   },
   {
     path: "/dashboard",
-    element: <Dashboard />
-  }
+    element: <Dashboard />,
+  },
+  {
+    path: "/clients",
+    element: <ClientsPage />,
+  },
+  {
+    path: "/checkin",
+    element: <CheckInPage />,
+  },
 ]);
+
+export default router;
