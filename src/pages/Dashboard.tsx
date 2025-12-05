@@ -1,43 +1,35 @@
-import Layout from "../layout/Layout";
+return (
+  <div className="page-container">
+    <div className="card">
+      <h1 className="page-title">Pantry Dashboard</h1>
 
-export default function Dashboard() {
-  return (
-    <Layout title="Pantry Dashboard">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-
-        {/* Families Served */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-sm text-gray-500">Families Served Today</h2>
-          <p className="text-3xl font-semibold mt-2">0</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="card">
+          <h2 className="text-xl font-semibold">Families Served Today</h2>
+          <p className="text-3xl mt-2">0</p>
         </div>
 
-        {/* Individuals Served */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-sm text-gray-500">Individuals Served</h2>
-          <p className="text-3xl font-semibold mt-2">0</p>
+        <div className="card">
+          <h2 className="text-xl font-semibold">Individuals Served</h2>
+          <p className="text-3xl mt-2">0</p>
         </div>
 
-        {/* Pounds Distributed */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-sm text-gray-500">Pounds Distributed</h2>
-          <p className="text-3xl font-semibold mt-2">0 lbs</p>
+        <div className="card">
+          <h2 className="text-xl font-semibold">Pounds Distributed</h2>
+          <p className="text-3xl mt-2">0 lbs</p>
         </div>
 
-        {/* Avg Wait Time */}
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-sm text-gray-500">Avg Wait Time</h2>
-          <p className="text-3xl font-semibold mt-2">0 min</p>
+        <div className="card">
+          <h2 className="text-xl font-semibold">Avg Wait Time</h2>
+          <p className="text-3xl mt-2">0 min</p>
         </div>
       </div>
 
-      {/* Queue List */}
-      <div className="bg-white p-6 rounded-lg shadow">
-        <h2 className="text-lg font-semibold mb-4">Client Queue</h2>
-
+      {/* Queue */}
+      <div className="card mt-8">
+        <h2 className="text-xl font-semibold mb-2">Client Queue</h2>
         <p className="text-gray-600">No one is currently in line.</p>
-
-        {/* Later we replace this with live data from Supabase */}
       </div>
-    </Layout>
-  );
-}
+    </div>
+  </div>
+);
