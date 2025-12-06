@@ -26,3 +26,4 @@ body {
 .nav-link {
   @apply text-blue-600 font-medium hover:underline mx-2;
 }
+
