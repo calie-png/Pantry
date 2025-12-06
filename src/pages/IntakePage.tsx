@@ -29,7 +29,7 @@ export default function IntakePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8 flex items-center justify-center">
+    <div className="min-h-screen bg-taupe-light-100 p-8 flex items-center justify-center">
       <div className="max-w-lg w-full bg-white shadow-md rounded-lg p-8">
         <h1 className="text-2xl font-bold mb-4">Food Intake Log</h1>
 
