@@ -11,50 +11,60 @@ export default function AppLayout() {
         </div>
 
         <nav className="flex-1 px-4 py-6 space-y-2">
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) =>
-              `block px-4 py-2 rounded-md hover:bg-taupe-lighter ${
-                isActive ? "bg-slateblue text-white" : "text-taupe-dark"
-              }`
-            }
-          >
-            📊 Dashboard
-          </NavLink>
 
-          <NavLink
-            to="/clients"
-            className={({ isActive }) =>
-              `block px-4 py-2 rounded-md hover:bg-taupe-lighter ${
-                isActive ? "bg-slateblue text-white" : "text-taupe-dark"
-              }`
-            }
-          >
-            👥 Clients
-          </NavLink>
+  <NavLink
+    to="/dashboard"
+    className={({ isActive }) =>
+      `block px-4 py-2 rounded-md ${
+        isActive
+          ? "bg-slateblue text-white"
+          : "text-taupe-dark hover:bg-taupe-dark/10"
+      }`
+    }
+  >
+    📊 Dashboard
+  </NavLink>
 
-          <NavLink
-            to="/checkin"
-            className={({ isActive }) =>
-              `block px-4 py-2 rounded-md hover:bg-taupe-lighter ${
-                isActive ? "bg-slateblue text-white" : "text-taupe-dark"
-              }`
-            }
-          >
-            🧾 Client Check-In
-          </NavLink>
+  <NavLink
+    to="/clients"
+    className={({ isActive }) =>
+      `block px-4 py-2 rounded-md ${
+        isActive
+          ? "bg-slateblue text-white"
+          : "text-taupe-dark hover:bg-taupe-dark/10"
+      }`
+    }
+  >
+    👥 Clients
+  </NavLink>
 
-          <NavLink
-            to="/intake"
-            className={({ isActive }) =>
-              `block px-4 py-2 rounded-md hover:bg-taupe-lighter ${
-                isActive ? "bg-slateblue text-white" : "text-taupe-dark"
-              }`
-            }
-          >
-            📦 Food Intake
-          </NavLink>
-        </nav>
+  <NavLink
+    to="/checkin"
+    className={({ isActive }) =>
+      `block px-4 py-2 rounded-md ${
+        isActive
+          ? "bg-slateblue text-white"
+          : "text-taupe-dark hover:bg-taupe-dark/10"
+      }`
+    }
+  >
+    🧾 Client Check-In
+  </NavLink>
+
+  <NavLink
+    to="/intake"
+    className={({ isActive }) =>
+      `block px-4 py-2 rounded-md ${
+        isActive
+          ? "bg-slateblue text-white"
+          : "text-taupe-dark hover:bg-taupe-dark/10"
+      }`
+    }
+  >
+    📦 Food Intake
+  </NavLink>
+
+</nav>
       </aside>
 
       {/* MAIN CONTENT AREA */}
