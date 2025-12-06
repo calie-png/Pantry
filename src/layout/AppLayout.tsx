@@ -7,7 +7,7 @@ export default function AppLayout() {
       {/* SIDEBAR */}
       <aside className="w-64 bg-taupe shadow-md flex flex-col border-r border-taupe-dark/40">
         <div className="px-6 py-5 border-b border-taupe-dark/30">
-          <h2 className="text-xl font-semibold text-taupe-dark">Pantry System</h2>
+          <h2 className="text-xl font-semibold text-slateblue">Pantry System</h2>
         </div>
 
         <nav className="flex-1 px-4 py-6 space-y-2">
