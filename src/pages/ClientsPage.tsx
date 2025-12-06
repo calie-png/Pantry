@@ -17,7 +17,9 @@ export default function ClientsPage() {
         <h1 className="text-3xl font-bold">Client List</h1>
 
         <div className="w-40">
-          <Button type="button">Add Client</Button>
+          <a href="/clients/new">
+            <Button type="button">Add Client</Button>
+          </a>
         </div>
       </div>
 
