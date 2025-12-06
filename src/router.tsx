@@ -5,6 +5,7 @@ import Home from "./pages/Home.tsx";
 import Dashboard from "./pages/Dashboard.tsx";
 import ClientsPage from "./pages/ClientsPage.tsx";
 import ClientDetailsPage from "./pages/ClientDetailsPage.tsx";
+import EditClientPage from "./pages/EditClientPage.tsx";
 import CheckInPage from "./pages/CheckInPage.tsx";
 import IntakePage from "./pages/IntakePage.tsx";
 import NewClientPage from "./pages/NewClientPage.tsx";
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "clients", element: <ClientsPage /> },
       { path: "clients/:id", element: <ClientDetailsPage /> },
       { path: "clients/new", element: <NewClientPage /> },
+      { path: "clients/:id/edit", element: <EditClientPage /> },
       { path: "checkin", element: <CheckInPage /> },
       { path: "intake", element: <IntakePage /> },
     ],
