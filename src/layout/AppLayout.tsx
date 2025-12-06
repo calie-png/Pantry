@@ -18,7 +18,7 @@ export default function AppLayout() {
               `block px-4 py-2 rounded-md ${
                 isActive
                   ? "bg-slateblue text-white"
-                  : "text-slateblue hover:text-white hover:bg-slateblue/70"
+                  : "text-gray-800 hover:text-white hover:bg-slateblue/70"
               }`
             }
           >
@@ -31,7 +31,7 @@ export default function AppLayout() {
               `block px-4 py-2 rounded-md ${
                 isActive
                   ? "bg-slateblue text-white"
-                  : "text-slateblue hover:text-white hover:bg-slateblue/70"
+                  : "text-gray-800 hover:text-white hover:bg-slateblue/70"
               }`
             }
           >
@@ -44,7 +44,7 @@ export default function AppLayout() {
               `block px-4 py-2 rounded-md ${
                 isActive
                   ? "bg-slateblue text-white"
-                  : "text-slateblue hover:text-white hover:bg-slateblue/70"
+                  : "text-gray-800 hover:text-white hover:bg-slateblue/70"
               }`
             }
           >
@@ -57,7 +57,7 @@ export default function AppLayout() {
               `block px-4 py-2 rounded-md ${
                 isActive
                   ? "bg-slateblue text-white"
-                  : "text-slateblue hover:text-white hover:bg-slateblue/70"
+                  : "text-gray-800 hover:text-white hover:bg-slateblue/70"
               }`
             }
           >
