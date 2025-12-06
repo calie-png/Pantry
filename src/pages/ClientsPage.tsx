@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
+import Button from "../components/Button";
 
 export default function ClientsPage() {
   const [clients, setClients] = useState([]);
@@ -12,7 +13,13 @@ export default function ClientsPage() {
 
   return (
     <div className="p-8">
-      <h1 className="text-3xl font-bold mb-6">Client List</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Client List</h1>
+
+        <div className="w-40">
+          <Button type="button">Add Client</Button>
+        </div>
+      </div>
 
       <table className="w-full border-collapse bg-white shadow">
         <thead className="bg-gray-200 text-left">
