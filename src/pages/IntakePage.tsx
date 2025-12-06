@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { supabase } from "../supabase/client";
+import Button from "../components/Button";
 
 export default function IntakePage() {
   const [source, setSource] = useState("");
@@ -58,12 +59,7 @@ export default function IntakePage() {
             />
           </div>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
-          >
-            Submit Intake
-          </button>
+          <Button type="submit">Submit Intake</Button>
         </form>
 
         {message && (
