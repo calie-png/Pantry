@@ -70,33 +70,4 @@ export default function EditClientPage() {
         </div>
 
         <div>
-          <label className="block font-semibold mb-1">Phone</label>
-          <input
-            type="text"
-            className="w-full border rounded p-2"
-            value={client.phone || ""}
-            onChange={(e) => setClient({ ...client, phone: e.target.value })}
-          />
-        </div>
-
-        <div>
-          <label className="block font-semibold mb-1">Email</label>
-          <input
-            type="email"
-            className="w-full border rounded p-2"
-            value={client.email || ""}
-            onChange={(e) => setClient({ ...client, email: e.target.value })}
-          />
-        </div>
-
-        <Button type="submit">Save Changes</Button>
-      </form>
-
-      {message && (
-        <p className="mt-4 text-center font-semibold text-green-700">
-          {message}
-        </p>
-      )}
-    </div>
-  );
-}
+          <label className="bl
