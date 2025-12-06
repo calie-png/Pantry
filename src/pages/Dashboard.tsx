@@ -1,26 +1,40 @@
+import Button from "../components/Button";
+
 export default function Dashboard() {
   return (
     <div className="p-6">
+      {/* Header Row */}
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold">Dashboard</h1>
+
+        <div className="w-40">
+          <Button type="button">Refresh</Button>
+        </div>
+      </div>
+
       {/* Stats Row */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-
         <div className="bg-white shadow rounded p-4">
           <h3 className="text-gray-600 text-sm">Families Served Today</h3>
           <p className="text-3xl font-bold mt-2">0</p>
         </div>
+
         <div className="bg-white shadow rounded p-4">
           <h3 className="text-gray-600 text-sm">Individuals Served</h3>
           <p className="text-3xl font-bold mt-2">0</p>
         </div>
+
         <div className="bg-white shadow rounded p-4">
           <h3 className="text-gray-600 text-sm">Pounds Distributed</h3>
           <p className="text-3xl font-bold mt-2">0 lbs</p>
         </div>
+
         <div className="bg-white shadow rounded p-4">
           <h3 className="text-gray-600 text-sm">Avg Wait Time</h3>
           <p className="text-3xl font-bold mt-2">0 min</p>
         </div>
       </div>
+
       {/* Client Queue */}
       <div className="bg-white shadow rounded p-4">
         <h3 className="text-gray-600 text-sm mb-2">Client Queue</h3>
