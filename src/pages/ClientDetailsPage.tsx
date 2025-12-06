@@ -38,9 +38,15 @@ export default function ClientDetailsPage() {
         <p><strong>Client ID:</strong> {client.id}</p>
       </div>
 
-      <a href="/clients">
-        <Button type="button">⬅️ Back to Clients</Button>
-      </a>
+      <div className="space-y-3">
+        <a href="/clients">
+          <Button type="button">⬅️ Back to Clients</Button>
+        </a>
+
+        <a href={`/clients/${client.id}/edit`}>
+          <Button type="button">✏️ Edit Client</Button>
+        </a>
+      </div>
     </div>
   );
 }
