@@ -1,0 +1,16 @@
+export default function Header() {
+  return (
+    <header className="h-14 bg-white shadow-sm flex items-center justify-between px-5 border-b border-taupe-dark/20">
+      {/* LEFT — Logo + Title */}
+      <div className="flex items-center gap-3">
+        <span className="text-2xl">🍎</span>
+        <h1 className="text-lg font-semibold text-taupe-dark">Pantry System</h1>
+      </div>
+
+      {/* RIGHT — Reserved for Profile Menu / Future Items */}
+      <div className="flex items-center gap-4 text-sm text-taupe-dark/70">
+        {/* Placeholder for future features */}
+      </div>
+    </header>
+  );
+}
