@@ -7,6 +7,9 @@ export default function CheckInPage() {
   const [results, setResults] = useState<any[]>([]);
   const [message, setMessage] = useState("");
 
+  const [selectedClient, setSelectedClient] = useState<any>(null);
+  const [householdSize, setHouseholdSize] = useState("");
+
   // Search clients by name or phone
   const handleSearch = async () => {
     setMessage("");
@@ -21,13 +24,25 @@ export default function CheckInPage() {
     setResults(data || []);
   };
 
-  // Check in a specific client
-  const checkInClient = async (clientId: number) => {
-    setMessage("");
+  // Open modal for household size
+  const startCheckIn = (client: any) => {
+    setSelectedClient(client);
+    setHouseholdSize("");
+  };
 
-    const { error } = await supabase
-      .from("checkins")
-      .insert([{ client_id: clientId }]);
+  // Confirm check-in
+  const confirmCheckIn = async () => {
+    if (!householdSize || Number(householdSize) < 1) {
+      setMessage("❌ Household size must be at least 1.");
+      return;
+    }
+
+    const { error } = await supabase.from("checkins").insert([
+      {
+        client_id: selectedClient.id,
+        household_size: Number(householdSize),
+      },
+    ]);
 
     if (error) {
       console.error(error);
@@ -36,6 +51,8 @@ export default function CheckInPage() {
     }
 
     setMessage("✅ Client checked in successfully!");
+    setSelectedClient(null);
+    setHouseholdSize("");
     setResults([]);
     setSearch("");
   };
@@ -44,7 +61,7 @@ export default function CheckInPage() {
     <div className="p-8 max-w-xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Client Check-In</h1>
 
-      {/* Search Box */}
+      {/* Search */}
       <div className="space-y-4 mb-6">
         <input
           type="text"
@@ -59,7 +76,7 @@ export default function CheckInPage() {
         </Button>
       </div>
 
-      {/* Search Results */}
+      {/* Results */}
       {results.length > 0 && (
         <div className="space-y-3">
           {results.map((client) => (
@@ -74,7 +91,7 @@ export default function CheckInPage() {
                 <p className="text-gray-600 text-sm">{client.phone}</p>
               </div>
 
-              <Button type="button" onClick={() => checkInClient(client.id)}>
+              <Button type="button" onClick={() => startCheckIn(client)}>
                 Check In
               </Button>
             </div>
@@ -82,11 +99,47 @@ export default function CheckInPage() {
         </div>
       )}
 
-      {/* Message */}
+      {/* Success/Error Message */}
       {message && (
         <p className="mt-6 text-center font-semibold text-green-700">
           {message}
         </p>
+      )}
+
+      {/* Household Size Modal */}
+      {selectedClient && (
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center">
+          <div className="bg-white p-6 rounded shadow max-w-sm w-full">
+            <h2 className="text-xl font-bold mb-4">
+              Check In: {selectedClient.first_name} {selectedClient.last_name}
+            </h2>
+
+            <label className="block font-semibold mb-1">
+              Household Size (Required)
+            </label>
+            <input
+              type="number"
+              min="1"
+              value={householdSize}
+              onChange={(e) => setHouseholdSize(e.target.value)}
+              className="w-full border rounded p-2 mb-4"
+              required
+            />
+
+            <div className="flex justify-between">
+              <Button type="button" onClick={confirmCheckIn}>
+                Confirm
+              </Button>
+
+              <Button
+                type="button"
+                onClick={() => setSelectedClient(null)}
+              >
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
