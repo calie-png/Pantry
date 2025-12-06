@@ -1,15 +1,15 @@
 export default function Header() {
   return (
-    <header className="h-14 bg-white shadow-sm flex items-center justify-between px-5 border-b border-taupe-dark/20">
-      {/* LEFT — Logo + Title */}
-      <div className="flex items-center gap-3">
-        <span className="text-2xl">🍎</span>
-        <h1 className="text-lg font-semibold text-taupe-dark">Pantry System</h1>
-      </div>
+    <header className="w-full px-6 py-4 bg-white border-b border-taupe-dark/30 flex items-center justify-between">
+      <h1 className="text-xl font-semibold text-slateblue-dark">
+        Pantry System
+      </h1>
 
-      {/* RIGHT — Reserved for Profile Menu / Future Items */}
-      <div className="flex items-center gap-4 text-sm text-taupe-dark/70">
-        {/* Placeholder for future features */}
+      <div className="flex items-center gap-4">
+        <span className="text-sm text-taupe-dark">Admin</span>
+        <button className="px-3 py-1 rounded bg-slateblue text-white hover:bg-slateblue-dark">
+          Logout
+        </button>
       </div>
     </header>
   );
