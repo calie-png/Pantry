@@ -1,3 +1,4 @@
+// updated header
 export default function Header() {
   return (
     <header className="w-full px-6 py-4 bg-white border-b border-taupe-dark/30 flex items-center justify-between">
