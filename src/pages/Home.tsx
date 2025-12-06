@@ -1,3 +1,5 @@
+import Button from "../components/Button";
+
 export default function Home() {
   return (
     <div className="flex items-center justify-center h-full px-4">
@@ -8,21 +10,23 @@ export default function Home() {
         </p>
 
         <div className="space-y-3">
-          <a href="/dashboard" className="block text-blue-600 hover:underline">
-            📊 Go to Dashboard
+
+          <a href="/dashboard">
+            <Button type="button">📊 Go to Dashboard</Button>
           </a>
 
-          <a href="/clients" className="block text-blue-600 hover:underline">
-            👥 View All Clients
+          <a href="/clients">
+            <Button type="button">👥 View All Clients</Button>
           </a>
 
-          <a href="/checkin" className="block text-blue-600 hover:underline">
-            🧾 Client Check-In
+          <a href="/checkin">
+            <Button type="button">🧾 Client Check-In</Button>
           </a>
 
-          <a href="/intake" className="block text-blue-600 hover:underline">
-            📦 Food Intake
+          <a href="/intake">
+            <Button type="button">📦 Food Intake</Button>
           </a>
+
         </div>
       </div>
     </div>
