@@ -31,17 +31,17 @@ export default function ClientsPage() {
             <th className="p-2 border">Last Name</th>
             <th className="p-2 border">Phone</th>
             <th className="p-2 border">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          {clients.map((c: any) => (
-            <tr key={c.id} className="border-t">
-              <td className="p-2 border">{c.id}</td>
-              <td className="p-2 border">{c.first_name}</td>
-              <td className="p-2 border">{c.last_name}</td>
-              <td className="p-2 border">{c.phone}</td>
-              <td className="p-2 border">{c.email}</td>
-            </tr>
+          <tr
+  key={c.id}
+  className="border-t cursor-pointer hover:bg-gray-100"
+  onClick={() => (window.location.href = `/clients/${c.id}`)}
+>
+  <td className="p-2 border">{c.id}</td>
+  <td className="p-2 border">{c.first_name}</td>
+  <td className="p-2 border">{c.last_name}</td>
+  <td className="p-2 border">{c.phone}</td>
+  <td className="p-2 border">{c.email}</td>
+</tr>
           ))}
         </tbody>
       </table>
