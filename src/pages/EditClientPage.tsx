@@ -47,27 +47,68 @@ export default function EditClientPage() {
       <h1 className="text-3xl font-bold mb-6">Edit Client</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+
+        {/* First Name */}
         <div>
           <label className="block font-semibold mb-1">First Name</label>
           <input
             type="text"
             className="w-full border rounded p-2"
             value={client.first_name}
-            onChange={(e) => setClient({ ...client, first_name: e.target.value })}
+            onChange={(e) =>
+              setClient({ ...client, first_name: e.target.value })
+            }
             required
           />
         </div>
 
+        {/* Last Name */}
         <div>
           <label className="block font-semibold mb-1">Last Name</label>
           <input
             type="text"
             className="w-full border rounded p-2"
             value={client.last_name}
-            onChange={(e) => setClient({ ...client, last_name: e.target.value })}
+            onChange={(e) =>
+              setClient({ ...client, last_name: e.target.value })
+            }
             required
           />
         </div>
 
+        {/* Phone */}
         <div>
-          <label className="bl
+          <label className="block font-semibold mb-1">Phone</label>
+          <input
+            type="text"
+            className="w-full border rounded p-2"
+            value={client.phone || ""}
+            onChange={(e) =>
+              setClient({ ...client, phone: e.target.value })
+            }
+          />
+        </div>
+
+        {/* Email */}
+        <div>
+          <label className="block font-semibold mb-1">Email</label>
+          <input
+            type="email"
+            className="w-full border rounded p-2"
+            value={client.email || ""}
+            onChange={(e) =>
+              setClient({ ...client, email: e.target.value })
+            }
+          />
+        </div>
+
+        {/* Submit Button */}
+        <Button type="submit">Save Changes</Button>
+
+        {message && (
+          <p className="mt-4 text-center font-semibold">{message}</p>
+        )}
+      </form>
+    </div>
+  );
+}
