@@ -1,12 +1,21 @@
 import { useState } from "react";
 import Button from "../components/Button";
-import supabase from "../supabaseClient";
+import { supabase } from "../supabase/client";
+
+interface Client {
+  id: string;
+  first_name: string;
+  last_name: string;
+  phone: string | null;
+  email?: string | null;
+  household_size?: number | null;
+}
 
 export default function FindClient() {
   const [search, setSearch] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<Client[]>([]);
   const [loading, setLoading] = useState(false);
-  const [confirmation, setConfirmation] = useState(null);
+  const [confirmation, setConfirmation] = useState<string | null>(null);
   const [error, setError] = useState("");
 
   // --------------------------
@@ -22,33 +31,34 @@ export default function FindClient() {
       return;
     }
 
-    // Search by last name OR phone number
     const { data, error: queryError } = await supabase
       .from("clients")
       .select("*")
-      .or(`last_name.ilike.%${search}%,phone.ilike.%${search}%`)
+      .or(
+        `last_name.ilike.%${search}%,phone.ilike.%${search}%`
+      )
       .limit(20);
 
     if (queryError) {
-      setError("Something went wrong searching for clients.");
+      setError("Something went wrong while searching for clients.");
       setLoading(false);
       return;
     }
 
-    setResults(data);
+    setResults((data as Client[]) || []);
     setLoading(false);
   };
 
   // --------------------------
-  // ADD CLIENT TO QUEUE
+  // ADD TO QUEUE
   // --------------------------
-  const addToQueue = async (client) => {
+  const addToQueue = async (client: Client) => {
     setLoading(true);
     setError("");
 
     const { error: queueError } = await supabase.from("client_queue").insert({
       client_id: client.id,
-      status: "waiting", // default
+      status: "waiting",
     });
 
     if (queueError) {
@@ -57,10 +67,7 @@ export default function FindClient() {
       return;
     }
 
-    setConfirmation({
-      name: `${client.first_name} ${client.last_name}`,
-    });
-
+    setConfirmation(`${client.first_name} ${client.last_name}`);
     setLoading(false);
   };
 
@@ -72,11 +79,11 @@ export default function FindClient() {
       <div className="p-8 text-center max-w-lg mx-auto">
         <h1 className="text-3xl font-bold mb-4">You're Checked In!</h1>
         <p className="text-gray-700 mb-6">
-          Thank you, {confirmation.name}.  
+          Thank you, {confirmation}.  
           Please pull forward — a volunteer will assist you shortly.
         </p>
 
-        <Button type="button" onClick={() => window.location.reload()}>
+        <Button type="button" onClick={() => window.location.href = "/checkin"}>
           Done
         </Button>
       </div>
@@ -87,7 +94,7 @@ export default function FindClient() {
   // MAIN SEARCH UI
   // --------------------------
   return (
-    <div className="p-8 max-w-lg mx-auto">
+    <div className="p-8 max-w-xl mx-auto">
       <h2 className="text-2xl font-semibold mb-4">Find Your Profile</h2>
 
       <p className="text-gray-600 mb-4">
@@ -115,7 +122,7 @@ export default function FindClient() {
           {results.map((client) => (
             <div
               key={client.id}
-              className="border p-3 rounded-md flex justify-between items-center"
+              className="border p-3 rounded-md flex justify-between items-center bg-white shadow-sm"
             >
               <div>
                 <p className="font-medium">
@@ -134,8 +141,8 @@ export default function FindClient() {
 
       {results.length === 0 && search.length > 2 && !loading && (
         <p className="mt-4 text-gray-600">
-          No matching clients found. Try another search or register as a new
-          client.
+          No matching clients found.  
+          Try another search or choose "I'm New Here."
         </p>
       )}
     </div>
