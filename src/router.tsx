@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       { path: "checkin", element: <CheckInPage /> },
       { path: "intake", element: <IntakePage /> },
       { path: "checkin/find", element: <FindClient /> },
-      { path: "dashboard/queue", element: <QueueDashboard /> },
+      { path: "queue", element: <QueueDashboard /> },
     ],
   },
 ]);
