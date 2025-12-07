@@ -40,7 +40,7 @@ export default function QueueDashboard() {
       .order("created_at", { ascending: true });
 
     if (!error && data) {
-      setQueue(data as QueueEntry[]);
+      setQueue(data as unknown as QueueEntry[]);
     }
 
     setLoading(false);
