@@ -67,3 +67,5 @@
   </NavLink>
 
 </nav>
+export default AppLayout;
+
