@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 <nav className="flex-1 px-4 py-6 space-y-2">
 
   <NavLink
