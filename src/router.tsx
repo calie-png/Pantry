@@ -9,6 +9,7 @@ import EditClientPage from "./pages/EditClientPage.tsx";
 import CheckInPage from "./pages/CheckInPage.tsx";
 import IntakePage from "./pages/IntakePage.tsx";
 import NewClientPage from "./pages/NewClientPage.tsx";
+import FindClient from "./pages/FindClient";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
       { path: "clients/:id/edit", element: <EditClientPage /> },
       { path: "checkin", element: <CheckInPage /> },
       { path: "intake", element: <IntakePage /> },
+      { path: "checkin/find", element: <FindClient /> },
     ],
   },
 ]);
