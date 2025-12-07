@@ -10,6 +10,7 @@ import CheckInPage from "./pages/CheckInPage.tsx";
 import IntakePage from "./pages/IntakePage.tsx";
 import NewClientPage from "./pages/NewClientPage.tsx";
 import FindClient from "./pages/FindClient";
+import QueueDashboard from "./pages/QueueDashboard";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
       { path: "checkin", element: <CheckInPage /> },
       { path: "intake", element: <IntakePage /> },
       { path: "checkin/find", element: <FindClient /> },
+      { path: "dashboard/queue", element: <QueueDashboard /> },
     ],
   },
 ]);
