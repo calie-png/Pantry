@@ -1,6 +1,10 @@
 import { useState } from "react";
 import Button from "../components/Button";
 
+// ⭐ ADD THESE TWO IMPORTS EXACTLY HERE:
+import FindClient from "./FindClient";
+import NewClientRegistration from "./NewClientRegistration";
+
 export default function CheckInPage() {
   const [mode, setMode] = useState<"start" | "find" | "new">("start");
 
