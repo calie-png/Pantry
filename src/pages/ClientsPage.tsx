@@ -1,50 +1,56 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { supabase } from "../supabase/client";
-import Button from "../components/Button";
 
 export default function ClientsPage() {
-  const [clients, setClients] = useState([]);
+  const [clients, setClients] = useState<any[]>([]);
 
   useEffect(() => {
-    supabase.from("clients").select("*").then(({ data }) => {
-      setClients(data || []);
-    });
+    supabase
+      .from("clients")
+      .select("*")
+      .order("last_name", { ascending: true })
+      .then(({ data }) => {
+        if (data) setClients(data);
+      });
   }, []);
 
   return (
     <div className="p-8">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Client List</h1>
+      <h1 className="text-3xl font-bold mb-6">All Clients</h1>
 
-        <div className="w-40">
-          <a href="/clients/new">
-            <Button type="button">Add Client</Button>
-          </a>
-        </div>
+      <div className="overflow-x-auto bg-white shadow rounded-lg">
+        <table className="min-w-full border-collapse">
+          <thead>
+            <tr className="bg-gray-100 border-b">
+              <th className="p-3 text-left">Name</th>
+              <th className="p-3 text-left">Phone</th>
+              <th className="p-3 text-left">Email</th>
+              <th className="p-3 text-left">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {clients.map((c) => (
+              <tr key={c.id} className="border-b hover:bg-gray-50">
+                <td className="p-3">
+                  {c.first_name} {c.last_name}
+                </td>
+                <td className="p-3">{c.phone}</td>
+                <td className="p-3">{c.email}</td>
+                <td className="p-3">
+                  <Link
+                    to={`/clients/${c.id}`}
+                    className="text-blue-600 hover:underline"
+                  >
+                    View
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-
-      <table className="w-full border-collapse bg-white shadow">
-        <thead className="bg-gray-200 text-left">
-          <tr>
-            <th className="p-2 border">ID</th>
-            <th className="p-2 border">First Name</th>
-            <th className="p-2 border">Last Name</th>
-            <th className="p-2 border">Phone</th>
-            <th className="p-2 border">Email</th>
-          <tr
-  key={c.id}
-  className="border-t cursor-pointer hover:bg-gray-100"
-  onClick={() => (window.location.href = `/clients/${c.id}`)}
->
-  <td className="p-2 border">{c.id}</td>
-  <td className="p-2 border">{c.first_name}</td>
-  <td className="p-2 border">{c.last_name}</td>
-  <td className="p-2 border">{c.phone}</td>
-  <td className="p-2 border">{c.email}</td>
-</tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 }
