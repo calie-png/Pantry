@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import AppLayout from "./layout/AppLayout";
 
-import Home from "./pages/Home.tsx";
-import Dashboard from "./pages/Dashboard.tsx";
-import ClientsPage from "./pages/ClientsPage.tsx";
-import ClientDetailsPage from "./pages/ClientDetailsPage.tsx";
-import EditClientPage from "./pages/EditClientPage.tsx";
-import CheckInPage from "./pages/CheckInPage.tsx";
-import IntakePage from "./pages/IntakePage.tsx";
-import NewClientPage from "./pages/NewClientPage.tsx";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
+import ClientsPage from "./pages/ClientsPage";
+import ClientDetailsPage from "./pages/ClientDetailsPage";
+import EditClientPage from "./pages/EditClientPage";
+import CheckInPage from "./pages/CheckInPage";
+import IntakePage from "./pages/IntakePage";
+import NewClientPage from "./pages/NewClientPage";
 import FindClient from "./pages/FindClient";
 import QueueDashboard from "./pages/QueueDashboard";
 
